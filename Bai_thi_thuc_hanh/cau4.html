@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 4</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>
+            <label for="id">ID: </label>
+        </td>
+        <td>
+            <input id="id" type="text">
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            <label for="name">Tên sản phẩm:</label>
+        </td>
+        <td>
+            <input id="name" type="text">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="produce">Nhà sản xuất: </label>
+        </td>
+        <td>
+            <input id="produce" type="text">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label for="cost">Giá bán($): </label>
+        </td>
+        <td>
+            <input id="cost" type="text">
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <button onclick="addPhoneToList()">Thêm sản phẩm</button>
+        </td>
+    </tr>
+</table>
+
+<ul id="list-phone">
+
+</ul>
+</body>
+</html>
+<script>
+    class Phone {
+        constructor(id, name, produce, cost) {
+            this.id = id;
+            this.name = name;
+            this.produce = produce;
+            this.cost = cost;
+        }
+
+        getId() {
+            return this.id;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        getProduce() {
+            return this.produce;
+        }
+
+        getCost() {
+            return this.cost;
+        }
+
+        setId() {
+            this.id = id;
+        }
+
+        setName() {
+            this.name = name;
+        }
+
+        setProduce() {
+            this.produce = produce;
+        }
+
+        setCost() {
+            this.cost = cost;
+        }
+
+        inforItem() {
+            `ID: ${this.getId()} Name: ${this.getName()} Hãng Sản Xuất: ${this.getProduce()} Giá: ${this.getCost()}`
+        }
+    }
+
+    class Management {
+        constructor() {
+            this.listPhone = [];
+        }
+
+        addPhone(phone) {
+            this.listPhone.push(phone);
+        }
+
+        display() {
+            let list = document.getElementById('list-phone');
+            let listItem = '';
+            for (let i = 0; i < this.listPhone.length; i++) {
+                listItem += "<li> " + Phone.inforItem() + "</li>";
+            }
+            list.innerText = listItem;
+        }
+    }
+
+    let management = new Management();
+
+    function addPhoneToList() {
+        let idIn = document.getElementById('id');
+        let nameIn = document.getElementById('name');
+        let produceIn = document.getElementById('produce');
+        let costIn = document.getElementById('cost');
+
+        let id = idIn.value;
+        let name = nameIn.value;
+        let produce = produceIn.value;
+        let cost = costIn.value;
+
+        let phone = new Phone(id, name, produce, cost);
+        management.addPhone(phone);
+        management.display();
+
+        //clear
+        idIn.value = '';
+        nameIn.value = '';
+        produceIn.value = '';
+        costIn.value = '';
+    }
+
+</script>

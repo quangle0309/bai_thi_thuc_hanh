@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Câu 2</title>
+</head>
+<body>
+<script>
+    function charUpper(str) {
+        let count = 0;
+
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] >= 'A' && str[i] <= 'Z') {
+                count++;
+            }
+        }
+
+        if (count > 0) {
+            return count;
+        } else {
+            return "The string does not contain any uppercase characters.";
+        }
+    }
+
+    let inputString = prompt("Nhập chuỗi: ");
+    let result = charUpper(inputString);
+    alert(result);
+
+</script>
+</body>
+</html>
